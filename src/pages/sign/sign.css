@@ -1,0 +1,37 @@
+.reg-login-page {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.76) 100%),
+        linear-gradient(180deg, #125038 0%, rgba(22, 199, 130, 0) 100%);
+    min-height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reg-login-page h2 {
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.change-sign-form {
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.reg-login-page input[type='email'],
+.reg-login-page input[type='password'] {
+    padding-left: 40px;
+}
+
+.reg-login-page input[type='email'] + svg,
+.reg-login-page input[type='password'] + svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: var(--text-color-muted);
+}
