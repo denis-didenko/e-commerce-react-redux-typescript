@@ -23,11 +23,11 @@ const Login: FC = () => {
 
         const data = await UserService.login(formData);
         console.log('login: ', data);
-        if (data.message && !data.token) {
+        if (data?.message && !data.token) {
             setError(data.message);
             return;
         }
-        if (data.message && data.token) {
+        if (data?.message && data.token) {
             setError('');
             setSuccess(data.message);
             setTimeout(() => {

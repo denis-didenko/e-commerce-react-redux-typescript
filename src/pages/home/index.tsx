@@ -1,12 +1,12 @@
 import { FC } from 'react';
-import Layout from '../../components/layout';
+import { useGetProductsQuery } from '../../redux/products/product.api';
 
 const Home: FC = () => {
-    return (
-        <Layout>
-            <div>Home</div>
-        </Layout>
-    );
+    console.count('Home: ');
+    const { data: products, isLoading, isError } = useGetProductsQuery();
+    console.log('data: ', products);
+
+    return <div>Home</div>;
 };
 
 export default Home;

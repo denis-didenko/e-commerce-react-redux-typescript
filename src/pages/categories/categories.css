@@ -1,0 +1,22 @@
+.categories {
+}
+
+.categories-list li {
+    display: inline-flex;
+    margin: 0 10px 10px 0;
+}
+
+.categories-list li a {
+    font-size: 16px;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 1px solid #7f7f7f;
+    border-radius: 10px;
+}
+
+.categories-list li a:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}

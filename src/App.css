@@ -92,6 +92,8 @@ button:hover,
 
 h1 {
     font-size: 24px;
+    letter-spacing: 0.2px;
+    margin-bottom: 20px;
 }
 
 .wrapper {
@@ -117,7 +119,12 @@ header .logo {
     text-decoration: none;
 }
 
+header .logo img {
+    display: block;
+}
+
 .header-nav a {
+    display: block;
     color: var(--text-color);
 }
 

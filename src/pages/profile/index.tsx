@@ -1,12 +1,7 @@
 import { FC } from 'react';
-import Layout from '../../components/layout';
 
 const Profile: FC = () => {
-    return (
-        <Layout>
-            <div>Profile</div>
-        </Layout>
-    );
+    return <div>Profile</div>;
 };
 
 export default Profile;

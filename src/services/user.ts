@@ -1,9 +1,14 @@
 import { AxiosInstance } from 'axios';
 import API from '../api';
 
-interface User {
+interface IUser {
     email: string;
     password: string;
+}
+
+interface IUserResponse {
+    message: string;
+    token?: string;
 }
 
 class UserService {
@@ -13,9 +18,9 @@ class UserService {
         this.API = API;
     }
 
-    async login(user: User) {
+    async login(user: IUser) {
         try {
-            const response = await this.API.post('/users/signin', user);
+            const response = await this.API.post<IUserResponse>('/users/signin', user);
 
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
@@ -27,7 +32,7 @@ class UserService {
         }
     }
 
-    async register(user: User) {
+    async register(user: IUser) {
         try {
             const response = await this.API.post('/users/signup', user);
 

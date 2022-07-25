@@ -1,12 +1,7 @@
 import { FC } from 'react';
-import Layout from '../../components/layout';
 
 const Cart: FC = () => {
-    return (
-        <Layout>
-            <div>Cart</div>
-        </Layout>
-    );
+    return <div>Cart</div>;
 };
 
 export default Cart;
