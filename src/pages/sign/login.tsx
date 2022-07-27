@@ -1,17 +1,21 @@
 import { useState, FC, FormEvent, FocusEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import UserService from '../../services/user';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import { useDispatch } from 'react-redux';
+import { useLoginMutation } from '../../redux/auth/auth.api';
+import useActions from '../../redux/hooks/useActions';
+import PersonIcon from '@mui/icons-material/Person';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import './sign.css';
 
 const Login: FC = () => {
     const [formData, setFormData] = useState({
-        email: '',
+        username: '',
         password: '',
     });
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
+    const [inputError, setInputError] = useState('');
+    const [inputSuccess, setInputSuccess] = useState('');
+    const [login] = useLoginMutation();
+    const { setCredentials } = useActions();
     const navigate = useNavigate();
 
     const inputBlurHandler = (e: FocusEvent<HTMLInputElement>) => {
@@ -21,38 +25,42 @@ const Login: FC = () => {
     const formSubmitHandler = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const data = await UserService.login(formData);
-        console.log('login: ', data);
-        if (data?.message && !data.token) {
-            setError(data.message);
-            return;
-        }
-        if (data?.message && data.token) {
-            setError('');
-            setSuccess(data.message);
-            setTimeout(() => {
-                navigate('/');
-            }, 1000);
-        }
+        await login(formData)
+            .unwrap()
+            .then(data => {
+                console.log('data: ', data);
+                const { id, token } = data;
+                setCredentials({ token });
+
+                setInputError('');
+                setInputSuccess('Login successful');
+
+                setTimeout(() => {
+                    navigate('/');
+                }, 2000);
+            })
+            .catch(err => {
+                setInputError(err.data.message);
+            });
     };
 
     return (
         <div className='reg-login-page'>
             <h2>Login</h2>
             <form action='/login' onSubmit={formSubmitHandler}>
-                <div className={error.length ? 'form-item error-item' : 'form-item'}>
+                <div className={inputError.length ? 'form-item error-item' : 'form-item'}>
                     <div className='form-field'>
-                        <input type='email' name='email' placeholder='Email:' onBlur={inputBlurHandler} />
-                        <EmailOutlinedIcon />
+                        <input type='text' name='username' placeholder='Username:' onBlur={inputBlurHandler} />
+                        <PersonIcon />
                     </div>
                 </div>
-                <div className={error.length ? 'form-item error-item' : 'form-item'}>
+                <div className={inputError.length ? 'form-item error-item' : 'form-item'}>
                     <div className='form-field'>
                         <input type='password' name='password' placeholder='Password:' onBlur={inputBlurHandler} />
                         <LockOutlinedIcon />
                     </div>
-                    <div className='form-error'>{error}</div>
-                    <div className='form-success'>{success}</div>
+                    <div className='form-error'>{inputError}</div>
+                    <div className='form-success'>{inputSuccess}</div>
                 </div>
                 <div className='form-submit'>
                     <button type='submit'>Sign In</button>

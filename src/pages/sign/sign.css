@@ -21,13 +21,11 @@
     margin-top: 20px;
 }
 
-.reg-login-page input[type='email'],
-.reg-login-page input[type='password'] {
+.reg-login-page .form-field input {
     padding-left: 40px;
 }
 
-.reg-login-page input[type='email'] + svg,
-.reg-login-page input[type='password'] + svg {
+.reg-login-page .form-field svg {
     position: absolute;
     left: 10px;
     top: 50%;

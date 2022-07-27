@@ -6,7 +6,7 @@ interface AuthState {
     isAuthenticated: boolean;
 }
 
-interface AuthResponse {
+interface AuthAction {
     token: string;
 }
 
@@ -19,7 +19,8 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        setCredentials: (state: AuthState, action: PayloadAction<AuthResponse>) => {
+        setCredentials: (state: AuthState, action: PayloadAction<AuthAction>) => {
+            console.log('action: ', action);
             state.token = action.payload.token;
             state.isAuthenticated = true;
         },

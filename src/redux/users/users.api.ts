@@ -1,14 +1,16 @@
+import { nanoid } from '@reduxjs/toolkit';
 import { baseApi } from '../index.api';
-import { IUser } from './users.types';
+import { IAddUser, IUserResponse } from './users.types';
 
 const userApi = baseApi.injectEndpoints({
     endpoints: build => ({
-        register: build.mutation({
-            query: (user: IUser) => ({
-                url: '/users',
+        register: build.mutation<IUserResponse, IAddUser>({
+            query: user => ({
+                url: '/users/add',
                 method: 'POST',
-                data: user,
+                body: user,
             }),
+            transformResponse: (response: IUserResponse) => ({ ...response, token: nanoid() }),
         }),
     }),
 });
