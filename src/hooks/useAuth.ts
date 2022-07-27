@@ -1,9 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useTypedSelector } from './../redux/hooks/useTypedSelector';
 import { selectIsAuthenticated, selectToken } from './../redux/auth/auth.slice';
 
 export const useAuth = () => {
-    const isAuthenticated = useSelector(selectIsAuthenticated);
-    const token = useSelector(selectToken);
+    const isAuthenticated = useTypedSelector(selectIsAuthenticated);
+    const token = useTypedSelector(selectToken);
 
     return { isAuthenticated, token };
 };

@@ -10,7 +10,6 @@ export const baseApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: BASE_URL,
 
-        // mode: 'no-cors',
         // credentials: 'include',
         // prepareHeaders: (headers, api) => {
         //     const { auth } = api.getState() as RootState;

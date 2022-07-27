@@ -20,13 +20,14 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         setCredentials: (state: AuthState, action: PayloadAction<AuthAction>) => {
-            console.log('action: ', action);
-            state.token = action.payload.token;
             state.isAuthenticated = true;
+            state.token = action.payload.token;
+            localStorage.setItem('token', action.payload.token);
         },
         logout: (state: AuthState) => {
-            state.token = '';
             state.isAuthenticated = false;
+            state.token = '';
+            localStorage.removeItem('token');
         },
     },
 });

@@ -1,6 +1,5 @@
 import { useState, FC, FormEvent, FocusEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { useLoginMutation } from '../../redux/auth/auth.api';
 import useActions from '../../redux/hooks/useActions';
 import PersonIcon from '@mui/icons-material/Person';
