@@ -12,7 +12,19 @@ const userApi = baseApi.injectEndpoints({
             }),
             transformResponse: (response: IUserResponse) => ({ ...response, token: nanoid() }),
         }),
+        getUsers: build.query<IUserResponse[], void>({
+            query: () => ({
+                url: '/users',
+                method: 'GET',
+            }),
+        }),
+        getUser: build.query<IUserResponse, string>({
+            query: id => ({
+                url: `/users/${id}`,
+                method: 'GET',
+            }),
+        }),
     }),
 });
 
-export const { useRegisterMutation } = userApi;
+export const { useRegisterMutation, useGetUsersQuery, useGetUserQuery, useLazyGetUserQuery } = userApi;

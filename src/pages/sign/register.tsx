@@ -17,7 +17,7 @@ const Register: FC = () => {
     const [inputError, setInputError] = useState('');
     const [inputSuccess, setInputSuccess] = useState('');
     const [register] = useRegisterMutation();
-    const { setCredentials } = useActions();
+    const { setAuthToken, setUser } = useActions();
     const navigate = useNavigate();
 
     const inputBlurHandler = (e: FocusEvent<HTMLInputElement>) => {
@@ -43,7 +43,8 @@ const Register: FC = () => {
             .unwrap()
             .then(data => {
                 const { token } = data;
-                setCredentials({ token });
+                setAuthToken({ token });
+                setUser(data);
 
                 setInputError('');
                 setInputSuccess('Registration successful');
@@ -94,6 +95,9 @@ const Register: FC = () => {
             <div className='change-sign-form'>
                 <p>
                     If you have an account? <Link to='/login'>Sign In here</Link>
+                </p>
+                <p>
+                    Back to <Link to='/'>Home</Link>
                 </p>
             </div>
         </div>

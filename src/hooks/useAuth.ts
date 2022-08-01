@@ -1,9 +1,29 @@
+import { useEffect } from 'react';
+import { useLazyGetUserQuery } from '../redux/users/users.api';
+import { selectUser } from './../redux/users/users.slice';
 import { useTypedSelector } from './../redux/hooks/useTypedSelector';
-import { selectIsAuthenticated, selectToken } from './../redux/auth/auth.slice';
+import useActions from '../redux/hooks/useActions';
+
+export const useCheckAuth = () => {
+    const user = useTypedSelector(selectUser);
+    return user ? { user, isAuthenticated: true } : { user, isAuthenticated: false };
+};
 
 export const useAuth = () => {
-    const isAuthenticated = useTypedSelector(selectIsAuthenticated);
-    const token = useTypedSelector(selectToken);
+    console.count('useAuth: ');
+    const { setAuthToken, setUser } = useActions();
+    const [getUser] = useLazyGetUserQuery();
 
-    return { isAuthenticated, token };
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        token && setAuthToken({ token });
+
+        const id = localStorage.getItem('userId');
+        id && initUser(id);
+    }, []);
+
+    async function initUser(id: string) {
+        const { data } = await getUser(id);
+        data && setUser(data);
+    }
 };

@@ -1,39 +1,41 @@
-import { RootState } from './../index';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from './../index';
+import { IToken, IUserId } from './auth.types';
 
 interface AuthState {
     token: string;
-    isAuthenticated: boolean;
-}
-
-interface AuthAction {
-    token: string;
+    userId: number;
 }
 
 const initialState: AuthState = {
     token: '',
-    isAuthenticated: false,
+    userId: 0,
 };
 
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        setCredentials: (state: AuthState, action: PayloadAction<AuthAction>) => {
-            state.isAuthenticated = true;
+        setAuthToken: (state: AuthState, action: PayloadAction<IToken>) => {
+            console.log('setAuthToken: ', setAuthToken);
             state.token = action.payload.token;
             localStorage.setItem('token', action.payload.token);
         },
+        setAuthUserId: (state: AuthState, action: PayloadAction<IUserId>) => {
+            state.userId = action.payload.userId;
+            localStorage.setItem('userId', action.payload.userId.toString());
+        },
         logout: (state: AuthState) => {
-            state.isAuthenticated = false;
+            console.log('logout');
             state.token = '';
             localStorage.removeItem('token');
+            localStorage.removeItem('userId');
         },
     },
 });
 
-export const { setCredentials, logout } = authSlice.actions;
+export const { setAuthToken, setAuthUserId, logout } = authSlice.actions;
 export default authSlice.reducer;
 
-export const selectIsAuthenticated = (state: RootState) => state.auth.isAuthenticated;
 export const selectToken = (state: RootState) => state.auth.token;
+export const selectUserId = (state: RootState) => state.auth.userId;

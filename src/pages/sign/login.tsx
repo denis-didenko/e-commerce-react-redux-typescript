@@ -14,7 +14,7 @@ const Login: FC = () => {
     const [inputError, setInputError] = useState('');
     const [inputSuccess, setInputSuccess] = useState('');
     const [login] = useLoginMutation();
-    const { setCredentials } = useActions();
+    const { setAuthToken, setAuthUserId } = useActions();
     const navigate = useNavigate();
 
     const inputBlurHandler = (e: FocusEvent<HTMLInputElement>) => {
@@ -27,9 +27,9 @@ const Login: FC = () => {
         await login(formData)
             .unwrap()
             .then(data => {
-                console.log('data: ', data);
-                const { id, token } = data;
-                setCredentials({ token });
+                const { token, id } = data;
+                setAuthToken({ token });
+                setAuthUserId({ userId: id });
 
                 setInputError('');
                 setInputSuccess('Login successful');
@@ -68,6 +68,9 @@ const Login: FC = () => {
             <div className='change-sign-form'>
                 <p>
                     If you haven't an account? <Link to='/register'>Sign Up here</Link>
+                </p>
+                <p>
+                    Back to <Link to='/'>Home</Link>
                 </p>
             </div>
         </div>

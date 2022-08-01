@@ -1,0 +1,17 @@
+.pagination {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.page-item {
+    line-height: 1;
+    padding: 4px 8px;
+    margin: 2px;
+}
+
+.page-item.is-active {
+    background-color: var(--primary);
+    border-radius: 50%;
+    color: #fff;
+}

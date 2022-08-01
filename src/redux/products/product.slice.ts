@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from './../index';
+import { useTypedSelector } from './../hooks/useTypedSelector';
 import { IProduct, ICategory } from './product.types';
 
 interface ProductState {
@@ -17,17 +19,21 @@ export const productSlice = createSlice({
     name: 'product',
     initialState,
     reducers: {
-        fetchProducts: (state: ProductState, action: PayloadAction<IProduct[]>) => {
+        setProducts: (state: ProductState, action: PayloadAction<IProduct[]>) => {
             state.products = action.payload;
         },
-        fetchProduct: (state: ProductState, action: PayloadAction<IProduct>) => {
+        setProduct: (state: ProductState, action: PayloadAction<IProduct>) => {
             state.product = action.payload;
         },
-        fetchCategories: (state: ProductState, action: PayloadAction<ICategory[]>) => {
+        setCategories: (state: ProductState, action: PayloadAction<ICategory[]>) => {
             state.categories = action.payload;
         },
     },
 });
 
-export const { fetchProducts, fetchProduct, fetchCategories } = productSlice.actions;
+export const { setProducts, setProduct, setCategories } = productSlice.actions;
 export default productSlice.reducer;
+
+export const useProductsSelector = () => useTypedSelector((state: RootState) => state.product.products);
+export const useProductByIdSelector = (id: number | string) =>
+    useTypedSelector((state: RootState) => state.product.products.find(product => product.id === id));

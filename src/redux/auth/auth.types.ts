@@ -13,3 +13,11 @@ export interface ILoginResponse {
     image: string;
     token: string;
 }
+
+export interface IToken {
+    token: string;
+}
+
+export interface IUserId {
+    userId: number;
+}

@@ -13,7 +13,7 @@ export const baseApi = createApi({
         // credentials: 'include',
         // prepareHeaders: (headers, api) => {
         //     const { auth } = api.getState() as RootState;
-        //     if (auth.isAuthenticated) {
+        //     if (auth.token) {
         //         headers.set('Authorization', `Bearer ${auth.token}`);
         //     }
         //     return headers;

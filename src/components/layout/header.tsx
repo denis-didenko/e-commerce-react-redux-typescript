@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
+import { useCheckAuth } from '../../hooks/useAuth';
 import logo from '../../assets/images/logo.svg';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
 const Header: FC = () => {
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated } = useCheckAuth();
 
     return (
         <header>
@@ -15,13 +15,18 @@ const Header: FC = () => {
             </Link>
             <div className='header-nav'>
                 {isAuthenticated && (
-                    <Link to='/cart'>
-                        <ShoppingCartOutlinedIcon />
-                    </Link>
+                    <>
+                        <Link to='/cart'>
+                            <ShoppingCartOutlinedIcon />
+                        </Link>
+                        <Link to='/profile'>
+                            <PersonOutlineOutlinedIcon />
+                        </Link>
+                    </>
                 )}
                 {!isAuthenticated && (
                     <Link to='/login'>
-                        <PersonOutlineOutlinedIcon />
+                        <button>Login</button>
                     </Link>
                 )}
             </div>

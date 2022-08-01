@@ -5,7 +5,7 @@
     --font: 'Source Sans Pro', sans-serif;
     --font-size: 14px;
     --primary: #0acf83;
-    --access: #f5f5f5;
+    --accent: #ffc120;
     --danger: #ff5252;
     --success: #0acf83;
     --text-color: #000;
@@ -93,7 +93,15 @@ button:hover,
 h1 {
     font-size: 24px;
     letter-spacing: 0.2px;
+    line-height: 1.2;
     margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: 0.2px;
+    margin-bottom: 10px;
 }
 
 .wrapper {
@@ -124,7 +132,6 @@ header .logo img {
 }
 
 .header-nav a {
-    display: block;
     color: var(--text-color);
 }
 
@@ -133,9 +140,29 @@ header .logo img {
     margin-left: 10px;
 }
 
+.header-nav button {
+    font-size: 14px;
+    padding: 6px 12px;
+}
+
 main {
     flex-grow: 1;
     padding: 0 20px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.title h2 {
+    margin-bottom: 0;
+}
+
+.title a {
+    color: var(--text-color-muted);
 }
 
 .form-item {

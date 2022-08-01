@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 import Header from './header';
 import Footer from './footer';
 
@@ -8,6 +9,8 @@ type LayoutProps = {
 };
 
 const Layout: FC<LayoutProps> = () => {
+    useAuth();
+
     return (
         <div className='wrapper'>
             <Header />

@@ -7,17 +7,18 @@ export interface IAddUser {
 
 export interface IUserResponse {
     id: number;
+    username: string;
+    email: string;
     firstName: string;
     lastName: string;
+    gender: string;
+    image: string;
+    token: string;
     maidenName: string;
     age: number;
-    gender: string;
-    email: string;
     phone: string;
-    username: string;
     password: string;
     birthDate: string;
-    image: string;
     bloodGroup: string;
     height: number;
     weight: number;
@@ -33,6 +34,16 @@ export interface IUserResponse {
     ein: string;
     ssn: string;
     userAgent: string;
+}
+
+export interface IAuthUser {
+    id: number;
+    username: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    gender: string;
+    image: string;
     token: string;
 }
 

@@ -1,16 +1,28 @@
 export interface IProduct {
     id: number;
     title: string;
-    price: number;
     description: string;
+    price: number;
+    discountPercentage: number;
+    rating: number;
+    stock: number;
+    brand: string;
     category: string;
-    image: string;
-    rating: IRating;
+    thumbnail: string;
+    images: string[];
 }
 
-interface IRating {
-    rate: number;
-    count: number;
+export interface IGetProductsResponse {
+    products: IProduct[];
+    total: number;
+    skip: number;
+    limit: number;
+}
+
+export interface IGetProductsProps {
+    limit?: number;
+    skip?: number;
+    hasPagination?: boolean;
 }
 
 export interface ICategory {
