@@ -1,13 +1,23 @@
-import { FC } from 'react';
-import { selectUser } from '../../redux/users/users.slice';
+import { FC, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { selectUser } from '../../redux/auth/auth.slice';
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
-import { logout } from '../../redux/auth/auth.slice';
+import useActions from '../../redux/hooks/useActions';
 import './profile.css';
 
 const Profile: FC = () => {
     const user = useTypedSelector(selectUser);
+    const { logout } = useActions();
+    const navigate = useNavigate();
 
     if (!user) return <p>user not found</p>;
+
+    const logoutHandler = (e: FormEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+
+        logout();
+        navigate('/');
+    };
 
     const {
         image,
@@ -51,14 +61,7 @@ const Profile: FC = () => {
                     </li>
                 </ul>
             </div>
-            <button
-                className='logout-btn'
-                onClick={e => {
-                    console.log('e: ', e);
-                    e.preventDefault();
-                    logout();
-                }}
-            >
+            <button className='logout-btn' onClick={logoutHandler}>
                 Logout
             </button>
         </div>

@@ -36,7 +36,7 @@ const Login: FC = () => {
 
                 setTimeout(() => {
                     navigate('/');
-                }, 2000);
+                }, 1000);
             })
             .catch(err => {
                 setInputError(err.data.message);

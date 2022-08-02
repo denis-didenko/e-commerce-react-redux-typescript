@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { selectUser } from '../../redux/users/users.slice';
+import { selectUser } from '../../redux/auth/auth.slice';
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
 import ProductsList from '../products/components/ProductsList';
 

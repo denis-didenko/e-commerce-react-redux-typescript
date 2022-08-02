@@ -1,6 +1,6 @@
 import { useState, FC, FormEvent, FocusEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useRegisterMutation } from '../../redux/users/users.api';
+import { useRegisterMutation } from '../../redux/auth/auth.api';
 import useActions from '../../redux/hooks/useActions';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -51,7 +51,7 @@ const Register: FC = () => {
 
                 setTimeout(() => {
                     navigate('/');
-                }, 2000);
+                }, 1000);
             })
             .catch(err => {
                 setInputError(err.data.message);
