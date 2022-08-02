@@ -11,7 +11,6 @@ const productApi = baseApi
             getProducts: build.query<IGetProductsResponse, IGetProductsProps>({
                 query: ({ limit, skip }) => `/products?limit=${limit}&skip=${skip}`,
                 //providesTags: ['Product'],
-                //transformResponse: (response: IGetProductsResponse) => response.products,
             }),
             getProduct: build.query<IProduct, { id: string }>({
                 query: ({ id }) => `/products/${id}`,
@@ -25,7 +24,10 @@ const productApi = baseApi
                     }));
                 },
             }),
+            getCategoryProducts: build.query<IGetProductsResponse, { category: string }>({
+                query: ({ category }) => `/products/category/${category}`,
+            }),
         }),
     });
 
-export const { useGetProductsQuery, useLazyGetProductsQuery, useGetProductQuery, useGetCategoriesQuery } = productApi;
+export const { useGetProductsQuery, useGetProductQuery, useGetCategoriesQuery, useGetCategoryProductsQuery } = productApi;

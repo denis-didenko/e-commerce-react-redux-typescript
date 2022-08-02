@@ -20,9 +20,8 @@ export interface IGetProductsResponse {
 }
 
 export interface IGetProductsProps {
-    limit?: number;
-    skip?: number;
-    hasPagination?: boolean;
+    limit: number;
+    skip: number;
 }
 
 export interface ICategory {

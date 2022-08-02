@@ -165,6 +165,23 @@ main {
     color: var(--text-color-muted);
 }
 
+.home-page .categories-list {
+    display: flex;
+    overflow-x: scroll;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.home-page .categories-list li {
+    display: none;
+}
+.home-page .categories-list li:nth-child(1),
+.home-page .categories-list li:nth-child(2),
+.home-page .categories-list li:nth-child(3),
+.home-page .categories-list li:nth-child(4),
+.home-page .categories-list li:nth-child(5) {
+    display: inline-flex;
+}
+
 .form-item {
     margin-bottom: 20px;
 }

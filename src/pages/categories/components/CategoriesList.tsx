@@ -12,7 +12,7 @@ const CategoriesList: FC<Props> = ({ categories }) => {
             {categories?.map(category => {
                 return (
                     <li key={category.id}>
-                        <Link to={category.name}>{category.name}</Link>
+                        <Link to={`/products/categories/${category.name}`}>{category.name}</Link>
                     </li>
                 );
             })}
