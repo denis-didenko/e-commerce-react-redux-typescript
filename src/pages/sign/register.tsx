@@ -63,25 +63,25 @@ const Register: FC = () => {
             <h2>Register</h2>
             <form action='/register' onSubmit={formSubmitHandler}>
                 <div className='form-item'>
-                    <div className='form-field'>
+                    <div className='form-field with-icon'>
                         <input type='email' name='email' placeholder='Email:' onChange={inputBlurHandler} />
                         <EmailOutlinedIcon />
                     </div>
                 </div>
                 <div className='form-item'>
-                    <div className='form-field'>
+                    <div className='form-field with-icon'>
                         <input type='text' name='firstName' placeholder='FirstName:' onChange={inputBlurHandler} />
                         <PersonIcon />
                     </div>
                 </div>
                 <div className='form-item'>
-                    <div className='form-field'>
+                    <div className='form-field with-icon'>
                         <input type='text' name='lastName' placeholder='LastName:' onChange={inputBlurHandler} />
                         <PersonIcon />
                     </div>
                 </div>
                 <div className='form-item'>
-                    <div className='form-field'>
+                    <div className='form-field with-icon'>
                         <input type='password' name='password' placeholder='Password:' onChange={inputBlurHandler} />
                         <LockOutlinedIcon />
                     </div>

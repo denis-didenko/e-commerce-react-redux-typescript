@@ -48,13 +48,13 @@ const Login: FC = () => {
             <h2>Login</h2>
             <form action='/login' onSubmit={formSubmitHandler}>
                 <div className={inputError.length ? 'form-item error-item' : 'form-item'}>
-                    <div className='form-field'>
+                    <div className='form-field with-icon'>
                         <input type='text' name='username' placeholder='Username:' onBlur={inputBlurHandler} />
                         <PersonIcon />
                     </div>
                 </div>
                 <div className={inputError.length ? 'form-item error-item' : 'form-item'}>
-                    <div className='form-field'>
+                    <div className='form-field with-icon'>
                         <input type='password' name='password' placeholder='Password:' onBlur={inputBlurHandler} />
                         <LockOutlinedIcon />
                     </div>

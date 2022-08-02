@@ -10,6 +10,7 @@ import Login from './pages/sign/login';
 import Register from './pages/sign/register';
 import Cart from './pages/cart';
 import Profile from './pages/profile';
+import Search from './pages/products/search';
 import AuthGuardedRoute from './pages/AuthGuardedRoute';
 
 import './App.css';
@@ -26,16 +27,17 @@ const App: FC = () => {
                         <Route index element={<Categories />} />
                         <Route path=':category' element={<CategoryDetails />} />
                     </Route>
+                    <Route path='search' element={<Search />} />
                 </Route>
-                <Route path='/cart' element={<Cart />} />
+                <Route path='cart' element={<Cart />} />
 
                 <Route element={<AuthGuardedRoute />}>
-                    <Route path='/profile' element={<Profile />} />
+                    <Route path='profile' element={<Profile />} />
                 </Route>
             </Route>
 
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
+            <Route path='login' element={<Login />} />
+            <Route path='register' element={<Register />} />
             <Route path='*' element={<Navigate to='/' />} />
         </Routes>
     );

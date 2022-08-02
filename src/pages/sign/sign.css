@@ -20,16 +20,3 @@
     text-align: center;
     margin-top: 20px;
 }
-
-.reg-login-page .form-field input {
-    padding-left: 40px;
-}
-
-.reg-login-page .form-field svg {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 22px;
-    color: var(--text-color-muted);
-}

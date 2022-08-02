@@ -27,7 +27,11 @@ const productApi = baseApi
             getCategoryProducts: build.query<IGetProductsResponse, { category: string }>({
                 query: ({ category }) => `/products/category/${category}`,
             }),
+            searchProducts: build.query<IGetProductsResponse, { query: string }>({
+                query: ({ query }) => `/products/search?q=${query}`,
+            }),
         }),
     });
 
-export const { useGetProductsQuery, useGetProductQuery, useGetCategoriesQuery, useGetCategoryProductsQuery } = productApi;
+export const { useGetProductsQuery, useGetProductQuery, useGetCategoriesQuery, useGetCategoryProductsQuery, useSearchProductsQuery } =
+    productApi;

@@ -4,6 +4,7 @@ import { useCheckAuth } from '../../hooks/useAuth';
 import logo from '../../assets/images/logo.svg';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Header: FC = () => {
     const { isAuthenticated } = useCheckAuth();
@@ -14,11 +15,14 @@ const Header: FC = () => {
                 <img src={logo} height='40' alt='logo' />
             </Link>
             <div className='header-nav'>
+                <Link to='/products/search'>
+                    <SearchIcon />
+                </Link>
+                <Link to='/cart'>
+                    <ShoppingCartOutlinedIcon />
+                </Link>
                 {isAuthenticated && (
                     <>
-                        <Link to='/cart'>
-                            <ShoppingCartOutlinedIcon />
-                        </Link>
                         <Link to='/profile'>
                             <PersonOutlineOutlinedIcon />
                         </Link>

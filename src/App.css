@@ -131,18 +131,26 @@ header .logo img {
     display: block;
 }
 
-.header-nav a {
+.header-nav {
+    display: flex;
+    align-items: center;
+}
+
+.header-nav > a {
+    line-height: 1;
     color: var(--text-color);
 }
 
 .header-nav svg {
     font-size: 24px;
+    line-height: 1;
     margin-left: 10px;
 }
 
 .header-nav button {
     font-size: 14px;
     padding: 6px 12px;
+    margin-left: 15px;
 }
 
 main {
@@ -194,6 +202,19 @@ main {
 
 .form-field {
     position: relative;
+}
+
+.form-field.with-icon input {
+    padding-left: 40px;
+}
+
+.form-field.with-icon svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: var(--text-color-muted);
 }
 
 .form-error {
