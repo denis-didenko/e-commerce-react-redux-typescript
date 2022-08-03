@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetProductQuery } from '../../../redux/products/product.api';
+import AddToCartBtn from '../../cart/components/AddToCartBtn';
 import Loading from '../../../components/Loading';
 import StarIcon from '@mui/icons-material/Star';
 
@@ -16,7 +17,7 @@ const ProductDetails: FC = () => {
     if (!product) return <p>Product not found</p>;
 
     console.log('product: ', product);
-    const { title, description, price, rating, category, images } = product;
+    const { title, description, price, rating, category, images, id: productId } = product;
 
     return (
         <div className='product-details'>
@@ -46,7 +47,7 @@ const ProductDetails: FC = () => {
                     {rating}
                 </div>
             </div>
-            <button className='add-to-cart'>Add to cart</button>
+            <AddToCartBtn id={productId}>Add to cart</AddToCartBtn>
         </div>
     );
 };

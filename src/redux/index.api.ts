@@ -1,8 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from './index';
 
-//const BASE_URL = 'http://api.fakeshop-api.com';
-//const BASE_URL = 'https://fakestoreapi.com';
 const BASE_URL = 'https://dummyjson.com';
 
 export const baseApi = createApi({
@@ -10,14 +8,13 @@ export const baseApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: BASE_URL,
 
-        // credentials: 'include',
-        // prepareHeaders: (headers, api) => {
-        //     const { auth } = api.getState() as RootState;
-        //     if (auth.token) {
-        //         headers.set('Authorization', `Bearer ${auth.token}`);
-        //     }
-        //     return headers;
-        // },
+        prepareHeaders: (headers, api) => {
+            const { auth } = api.getState() as RootState;
+            if (auth.token) {
+                headers.set('Authorization', `Bearer ${auth.token}`);
+            }
+            return headers;
+        },
     }),
     endpoints: build => ({}),
 });

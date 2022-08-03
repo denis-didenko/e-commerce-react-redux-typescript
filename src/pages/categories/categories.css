@@ -15,8 +15,16 @@
     border-radius: 10px;
 }
 
+.categories-list li a:first-letter {
+    text-transform: uppercase;
+}
+
 .categories-list li a:hover {
     background-color: var(--primary);
     border-color: var(--primary);
     color: #fff;
+}
+
+.category-details h1:first-letter {
+    text-transform: uppercase;
 }

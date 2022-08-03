@@ -8,9 +8,11 @@
     line-height: 1;
     padding: 4px 8px;
     margin: 2px;
+    cursor: pointer;
 }
 
-.page-item.is-active {
+.page-item.is-active,
+.page-item:hover {
     background-color: var(--primary);
     border-radius: 50%;
     color: #fff;

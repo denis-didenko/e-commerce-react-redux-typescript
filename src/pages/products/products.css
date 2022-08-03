@@ -92,3 +92,33 @@
 .search-form {
     margin-bottom: 20px;
 }
+
+@media (min-width: 768px) {
+    .products-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-gap: 20px;
+        border-radius: 30px;
+    }
+    .product-item {
+        width: 100%;
+        padding: 20px;
+        margin: 0;
+    }
+    .product-pic {
+        margin: -20px -20px 10px;
+    }
+    .product-pic img {
+        height: 200px;
+    }
+    .product-price {
+        font-size: 14px;
+    }
+    .product-info {
+        font-size: 14px;
+    }
+    .product-info button {
+        font-size: 14px;
+        padding: 5px 15px;
+    }
+}

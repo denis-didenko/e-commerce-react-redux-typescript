@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { IProduct } from '../../../redux/products/product.types';
+import AddToCartBtn from '../../cart/components/AddToCartBtn';
 import StarIcon from '@mui/icons-material/Star';
 
 const ProductItem: FC<IProduct> = ({ id, title, price, rating, thumbnail }) => {
@@ -20,7 +21,7 @@ const ProductItem: FC<IProduct> = ({ id, title, price, rating, thumbnail }) => {
                     <StarIcon />
                     {rating}
                 </div>
-                <button className='add-to-cart-btn'>Buy</button>
+                <AddToCartBtn id={id}>Buy</AddToCartBtn>
             </div>
         </div>
     );
