@@ -1,5 +1,5 @@
-import { FC } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { FC, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { selectUser } from '../../redux/auth/auth.slice';
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
 import { useGetCategoriesQuery, useGetProductsQuery } from '../../redux/products/product.api';
@@ -12,16 +12,19 @@ import useActions from '../../redux/hooks/useActions';
 const HomePage: FC = () => {
     console.count('Home: ');
 
+    const user = useTypedSelector(selectUser);
     const { setProducts } = useActions();
     const { data: categories } = useGetCategoriesQuery();
     const { data, error, isLoading } = useGetProductsQuery({ limit: 100, skip: 0 });
-    const user = useTypedSelector(selectUser);
+
+    useEffect(() => {
+        data && setProducts(data.products);
+    }, []);
 
     if (isLoading) return <Loading />;
     if (error) return <ErrorMessage error={error} />;
     if (!data || !categories) return <p>No data</p>;
 
-    setProducts(data.products);
     const homeProducts = data.products.slice(0, 8);
 
     return (
@@ -40,8 +43,6 @@ const HomePage: FC = () => {
                 <Link to='/products'>See All</Link>
             </div>
             <ProductsList products={homeProducts} />
-
-            <Outlet />
         </div>
     );
 };

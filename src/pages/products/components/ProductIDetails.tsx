@@ -16,7 +16,6 @@ const ProductDetails: FC = () => {
     if (isLoading) return <Loading />;
     if (!product) return <p>Product not found</p>;
 
-    console.log('product: ', product);
     const { title, description, price, rating, category, images, id: productId } = product;
 
     return (

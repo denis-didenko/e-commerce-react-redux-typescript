@@ -122,7 +122,9 @@
         padding: 5px 15px;
     }
     .product-details button {
+        display: block;
         width: 400px;
-        margin: 0 auto;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
