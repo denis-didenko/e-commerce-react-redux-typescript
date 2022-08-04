@@ -30,7 +30,6 @@ export const authSlice = createSlice({
             state.user = action.payload;
         },
         logout: (state: AuthState) => {
-            console.log('logout');
             state.token = '';
             state.userId = 0;
             state.user = null;

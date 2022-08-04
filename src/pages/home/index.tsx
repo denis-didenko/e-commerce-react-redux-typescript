@@ -10,8 +10,6 @@ import ErrorMessage from '../../components/ErrorMessage';
 import useActions from '../../redux/hooks/useActions';
 
 const HomePage: FC = () => {
-    console.count('Home: ');
-
     const user = useTypedSelector(selectUser);
     const { setProducts } = useActions();
     const { data: categories } = useGetCategoriesQuery();
