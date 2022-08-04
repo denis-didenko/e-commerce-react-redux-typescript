@@ -20,7 +20,7 @@ export const useAuth = () => {
 
         const id = localStorage.getItem('userId');
         id && initUser(id);
-    }, []);
+    }, []); // eslint-disable-line
 
     async function initUser(id: string) {
         const { data } = await getUser(id);
