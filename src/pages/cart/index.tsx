@@ -4,7 +4,6 @@ import { useCartProductsSelector } from '../../redux/cart/cart.slice';
 
 const CartPage: FC = () => {
     const products = useCartProductsSelector();
-    console.log('products: ', products);
 
     return (
         <div className='cart-page'>

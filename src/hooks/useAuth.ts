@@ -11,7 +11,6 @@ export const useCheckAuth = () => {
 };
 
 export const useAuth = () => {
-    console.count('useAuth: ');
     const { setAuthToken, setUser } = useActions();
     const [getUser] = useLazyGetUserQuery();
 
