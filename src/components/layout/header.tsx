@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useCheckAuth } from '../../hooks/useAuth';
 import logo from '../../assets/images/logo.svg';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import CartICon from '../../pages/cart/components/CartIcon';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -19,7 +19,7 @@ const Header: FC = () => {
                     <SearchIcon />
                 </Link>
                 <Link to='/cart'>
-                    <ShoppingCartOutlinedIcon />
+                    <CartICon />
                 </Link>
                 {isAuthenticated && (
                     <>

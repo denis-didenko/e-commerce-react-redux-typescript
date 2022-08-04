@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import useActions from '../../../redux/hooks/useActions';
+import { useProductByIdSelector } from '../../../redux/products/product.slice';
 
 interface IAddToCartBtnProps {
     id: number;
@@ -9,13 +10,24 @@ interface IAddToCartBtnProps {
 const AddToCartBtn: FC<IAddToCartBtnProps> = ({ id, children }) => {
     const { addToCartProduct } = useActions();
 
+    const product = useProductByIdSelector(id);
+    if (!product) return <p>Product not found</p>;
+
+    const { title, price, thumbnail } = product;
+
     const addToCartHandler = (id: number) => {
-        const product = {
+        const cartProduct = {
             id,
             quantity: 1,
+            product: {
+                id,
+                title,
+                price,
+                thumbnail,
+            },
         };
 
-        addToCartProduct(product);
+        addToCartProduct(cartProduct);
     };
 
     return (

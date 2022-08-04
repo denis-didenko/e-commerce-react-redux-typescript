@@ -3,12 +3,15 @@ import { Outlet } from 'react-router-dom';
 import { useGetCategoriesQuery } from '../../redux/products/product.api';
 import CategoriesList from './components/CategoriesList';
 import Loading from '../../components/Loading';
+import ErrorMessage from '../../components/ErrorMessage';
 import './categories.css';
 
-const Categories: FC = () => {
-    const { data: categories, isLoading } = useGetCategoriesQuery();
+const CategoriesPage: FC = () => {
+    const { data: categories, error, isLoading } = useGetCategoriesQuery();
 
-    if (!categories || isLoading) return <Loading />;
+    if (isLoading) return <Loading />;
+    if (error) return <ErrorMessage error={error} />;
+    if (!categories) return <p>No data</p>;
 
     return (
         <div className='categories'>
@@ -19,4 +22,4 @@ const Categories: FC = () => {
     );
 };
 
-export default Categories;
+export default CategoriesPage;

@@ -3,13 +3,16 @@ import { Outlet } from 'react-router-dom';
 import { useGetProductsQuery } from '../../redux/products/product.api';
 import ProductsList from './components/ProductsList';
 import Loading from '../../components/Loading';
+import ErrorMessage from '../../components/ErrorMessage';
 import Pagination from '../../components/Pagination';
 
-const Products: FC = () => {
+const ProductsPage: FC = () => {
     const [activePage, setActivePage] = useState(1);
-    const { data, isLoading } = useGetProductsQuery({ limit: 10, skip: (activePage - 1) * 10 });
+    const { data, error, isLoading } = useGetProductsQuery({ limit: 10, skip: (activePage - 1) * 10 });
 
-    if (!data || isLoading) return <Loading />;
+    if (isLoading) return <Loading />;
+    if (error) return <ErrorMessage error={error} />;
+    if (!data) return <p>No data</p>;
 
     const totalPages = Math.ceil(data.total / data.limit);
 
@@ -23,4 +26,4 @@ const Products: FC = () => {
     );
 };
 
-export default Products;
+export default ProductsPage;

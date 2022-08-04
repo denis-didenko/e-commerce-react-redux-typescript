@@ -5,7 +5,7 @@ import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
 import useActions from '../../redux/hooks/useActions';
 import './profile.css';
 
-const Profile: FC = () => {
+const ProfilePage: FC = () => {
     const user = useTypedSelector(selectUser);
     const { logout } = useActions();
     const navigate = useNavigate();
@@ -68,4 +68,4 @@ const Profile: FC = () => {
     );
 };
 
-export default Profile;
+export default ProfilePage;

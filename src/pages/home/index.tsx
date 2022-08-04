@@ -6,15 +6,23 @@ import { useGetCategoriesQuery, useGetProductsQuery } from '../../redux/products
 import CategoriesList from '../categories/components/CategoriesList';
 import ProductsList from '../products/components/ProductsList';
 import Loading from '../../components/Loading';
+import ErrorMessage from '../../components/ErrorMessage';
+import useActions from '../../redux/hooks/useActions';
 
-const Home: FC = () => {
+const HomePage: FC = () => {
     console.count('Home: ');
 
+    const { setProducts } = useActions();
     const { data: categories } = useGetCategoriesQuery();
-    const { data, isLoading } = useGetProductsQuery({ limit: 4, skip: 0 });
+    const { data, error, isLoading } = useGetProductsQuery({ limit: 100, skip: 0 });
     const user = useTypedSelector(selectUser);
 
-    if (!data || !categories || isLoading) return <Loading />;
+    if (isLoading) return <Loading />;
+    if (error) return <ErrorMessage error={error} />;
+    if (!data || !categories) return <p>No data</p>;
+
+    setProducts(data.products);
+    const homeProducts = data.products.slice(0, 4);
 
     return (
         <div className='home-page'>
@@ -31,11 +39,11 @@ const Home: FC = () => {
                 <h2>Featured Products</h2>
                 <Link to='/products'>See All</Link>
             </div>
-            <ProductsList products={data.products} />
+            <ProductsList products={homeProducts} />
 
             <Outlet />
         </div>
     );
 };
 
-export default Home;
+export default HomePage;

@@ -3,14 +3,17 @@ import { useSearchProductsQuery } from '../../redux/products/product.api';
 import ProductsList from './components/ProductsList';
 import SearchForm from './components/SearchForm';
 import Loading from '../../components/Loading';
+import ErrorMessage from '../../components/ErrorMessage';
 import Pagination from '../../components/Pagination';
 
-const Search: FC = () => {
+const SearchPage: FC = () => {
     const [query, setQuery] = useState('');
     const [activePage, setActivePage] = useState(1);
-    const { data, isLoading } = useSearchProductsQuery({ query });
+    const { data, error, isLoading } = useSearchProductsQuery({ query });
 
-    if (!data || isLoading) return <Loading />;
+    if (isLoading) return <Loading />;
+    if (error) return <ErrorMessage error={error} />;
+    if (!data) return <p>No data</p>;
 
     const totalPages = Math.ceil(data.total / data.limit);
 
@@ -28,4 +31,4 @@ const Search: FC = () => {
     );
 };
 
-export default Search;
+export default SearchPage;

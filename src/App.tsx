@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
-import Home from './pages/home';
-import Products from './pages/products';
+import HomePage from './pages/home';
+import ProductsPage from './pages/products';
 import ProductDetails from './pages/products/components/ProductIDetails';
-import Categories from './pages/categories';
+import CategoriesPage from './pages/categories';
 import CategoryDetails from './pages/categories/components/CategoryDetails';
 import Login from './pages/sign/login';
 import Register from './pages/sign/register';
-import Cart from './pages/cart';
-import Profile from './pages/profile';
-import Search from './pages/products/search';
+import CartPage from './pages/cart';
+import ProfilePage from './pages/profile';
+import SearchPage from './pages/products/search';
 import AuthGuardedRoute from './pages/AuthGuardedRoute';
 
 import './App.css';
@@ -19,20 +19,20 @@ const App: FC = () => {
     return (
         <Routes>
             <Route element={<Layout />}>
-                <Route path='/' element={<Home />} />
+                <Route path='/' element={<HomePage />} />
                 <Route path='products'>
-                    <Route index element={<Products />} />
+                    <Route index element={<ProductsPage />} />
                     <Route path=':id' element={<ProductDetails />} />
                     <Route path='categories'>
-                        <Route index element={<Categories />} />
+                        <Route index element={<CategoriesPage />} />
                         <Route path=':category' element={<CategoryDetails />} />
                     </Route>
-                    <Route path='search' element={<Search />} />
+                    <Route path='search' element={<SearchPage />} />
                 </Route>
-                <Route path='cart' element={<Cart />} />
+                <Route path='cart' element={<CartPage />} />
 
                 <Route element={<AuthGuardedRoute />}>
-                    <Route path='profile' element={<Profile />} />
+                    <Route path='profile' element={<ProfilePage />} />
                 </Route>
             </Route>
 
