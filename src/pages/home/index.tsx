@@ -19,7 +19,7 @@ const HomePage: FC = () => {
 
     useEffect(() => {
         data && setProducts(data.products);
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     if (isLoading) return <Loading />;
     if (error) return <ErrorMessage error={error} />;
