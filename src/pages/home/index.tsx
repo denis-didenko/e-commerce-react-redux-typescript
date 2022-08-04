@@ -22,7 +22,7 @@ const HomePage: FC = () => {
     if (!data || !categories) return <p>No data</p>;
 
     setProducts(data.products);
-    const homeProducts = data.products.slice(0, 4);
+    const homeProducts = data.products.slice(0, 8);
 
     return (
         <div className='home-page'>

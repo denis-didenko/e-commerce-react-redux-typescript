@@ -8,7 +8,7 @@ import Pagination from '../../components/Pagination';
 
 const ProductsPage: FC = () => {
     const [activePage, setActivePage] = useState(1);
-    const { data, error, isLoading } = useGetProductsQuery({ limit: 10, skip: (activePage - 1) * 10 });
+    const { data, error, isLoading } = useGetProductsQuery({ limit: 12, skip: (activePage - 1) * 10 });
 
     if (isLoading) return <Loading />;
     if (error) return <ErrorMessage error={error} />;

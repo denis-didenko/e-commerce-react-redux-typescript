@@ -121,4 +121,8 @@
         font-size: 14px;
         padding: 5px 15px;
     }
+    .product-details button {
+        width: 400px;
+        margin: 0 auto;
+    }
 }
