@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { selectUser } from '../../redux/auth/auth.slice';
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
 import { useGetCategoriesQuery } from '../../redux/products/product.api';
+import { useProductsSelector } from '../../redux/products/product.slice';
 import CategoriesList from '../categories/components/CategoriesList';
 import ProductsList from '../products/components/ProductsList';
-import { useProductsSelector } from '../../redux/products/product.slice';
 
 const HomePage: FC = () => {
     const products = useProductsSelector();
