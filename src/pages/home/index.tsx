@@ -1,29 +1,20 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { selectUser } from '../../redux/auth/auth.slice';
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
-import { useGetCategoriesQuery, useGetProductsQuery } from '../../redux/products/product.api';
+import { useGetCategoriesQuery } from '../../redux/products/product.api';
 import CategoriesList from '../categories/components/CategoriesList';
 import ProductsList from '../products/components/ProductsList';
-import Loading from '../../components/Loading';
-import ErrorMessage from '../../components/ErrorMessage';
-import useActions from '../../redux/hooks/useActions';
+import { useProductsSelector } from '../../redux/products/product.slice';
 
 const HomePage: FC = () => {
+    const products = useProductsSelector();
+    const homeProducts = products.slice(0, 8);
+
     const user = useTypedSelector(selectUser);
-    const { setProducts } = useActions();
+
     const { data: categories } = useGetCategoriesQuery();
-    const { data, error, isLoading } = useGetProductsQuery({ limit: 100, skip: 0 });
-
-    useEffect(() => {
-        data && setProducts(data.products);
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-    if (isLoading) return <Loading />;
-    if (error) return <ErrorMessage error={error} />;
-    if (!data || !categories) return <p>No data</p>;
-
-    const homeProducts = data.products.slice(0, 8);
+    if (!categories) return <p>No categories</p>;
 
     return (
         <div className='home-page'>

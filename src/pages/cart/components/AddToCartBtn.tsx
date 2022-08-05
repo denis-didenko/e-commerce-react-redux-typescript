@@ -11,8 +11,7 @@ const AddToCartBtn: FC<IAddToCartBtnProps> = ({ id, children }) => {
     const { addToCartProduct } = useActions();
 
     const product = useProductByIdSelector(id);
-
-    const { title, price, thumbnail } = product;
+    const { title, price, thumbnail } = product!;
 
     const addToCartHandler = (id: number) => {
         const cartProduct = {
