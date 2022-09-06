@@ -20,9 +20,9 @@
     "jsx-quotes": ["error", "prefer-single"],
     "implicit-arrow-linebreak": "off",
     "linebreak-style": "off",
-    "no-unused-expressions": "off",
     "operator-linebreak": ["error", "after"],
-    "@typescript-eslint/no-unused-expressions": "warn",
+    "no-unused-expressions": "off",
+    "@typescript-eslint/no-unused-expressions": "off",
     "object-curly-newline": [
       "error",
       {
