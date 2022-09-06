@@ -1,130 +1,130 @@
 .products-list {
-    background: #f3f3f3;
-    padding: 20px;
-    margin: 0 -20px;
-    border-radius: 30px 30px 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  background: #f3f3f3;
+  padding: 20px;
+  margin: 0 -20px;
+  border-radius: 30px 30px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .product-item {
-    width: 48%;
-    background: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 48%;
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .product-pic {
-    margin: -10px -10px 10px;
+  margin: -10px -10px 10px;
 }
 
 .product-pic img {
-    width: 100%;
-    height: 135px;
-    object-fit: cover;
-    border-radius: 15px 15px 0 0;
+  width: 100%;
+  height: 135px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
 }
 
 .product-title {
-    line-height: 1.2;
-    margin-bottom: 5px;
+  line-height: 1.2;
+  margin-bottom: 5px;
 }
 
 .product-price {
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .product-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
 }
 
 .product-info button {
-    font-size: 12px;
-    padding: 5px 10px;
+  font-size: 12px;
+  padding: 5px 10px;
 }
 
 .product-rating {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .product-rating svg {
-    font-size: 16px;
-    color: var(--accent);
+  font-size: 16px;
+  color: var(--accent);
 }
 
 .product-details__pics {
-    display: flex;
-    overflow-x: scroll;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+  display: flex;
+  overflow-x: scroll;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .product-details__pics img {
-    width: 80%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: var(--border-radius);
-    margin-right: 10px;
+  width: 80%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  margin-right: 10px;
 }
 
 .product-details__description,
 .product-details__category,
 .product-details__price {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .product-details button {
-    width: 100%;
-    margin-top: 20px;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .search-form {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 @media (min-width: 768px) {
-    .products-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        grid-gap: 20px;
-        border-radius: 30px;
-    }
-    .product-item {
-        width: 100%;
-        padding: 20px;
-        margin: 0;
-    }
-    .product-pic {
-        margin: -20px -20px 10px;
-    }
-    .product-pic img {
-        height: 200px;
-    }
-    .product-price {
-        font-size: 14px;
-    }
-    .product-info {
-        font-size: 14px;
-    }
-    .product-info button {
-        font-size: 14px;
-        padding: 5px 15px;
-    }
-    .product-details button {
-        display: block;
-        width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  .products-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-gap: 20px;
+    border-radius: 30px;
+  }
+  .product-item {
+    width: 100%;
+    padding: 20px;
+    margin: 0;
+  }
+  .product-pic {
+    margin: -20px -20px 10px;
+  }
+  .product-pic img {
+    height: 200px;
+  }
+  .product-price {
+    font-size: 14px;
+  }
+  .product-info {
+    font-size: 14px;
+  }
+  .product-info button {
+    font-size: 14px;
+    padding: 5px 15px;
+  }
+  .product-details button {
+    display: block;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

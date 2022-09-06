@@ -5,15 +5,15 @@ import { productSlice } from '../products/product.slice';
 import { cartSlice } from '../cart/cart.slice';
 
 const AllActions = {
-    ...authSlice.actions,
-    ...productSlice.actions,
-    ...cartSlice.actions,
+  ...authSlice.actions,
+  ...productSlice.actions,
+  ...cartSlice.actions,
 };
 
 const useActions = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    return bindActionCreators(AllActions, dispatch);
+  return bindActionCreators(AllActions, dispatch);
 };
 
 export default useActions;

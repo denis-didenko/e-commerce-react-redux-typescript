@@ -1,46 +1,46 @@
 .profile-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .profile-pic {
-    width: 75px;
-    height: 75px;
-    background: rgb(240, 233, 233);
-    border: 1px solid var(--text-color-muted);
-    border-radius: 50%;
-    margin-right: 20px;
+  width: 75px;
+  height: 75px;
+  background: rgb(240, 233, 233);
+  border: 1px solid var(--text-color-muted);
+  border-radius: 50%;
+  margin-right: 20px;
 }
 
 .profile-pic img {
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
 }
 
 .profile-info {
-    flex: 1;
-    color: var(--text-color-muted);
+  flex: 1;
+  color: var(--text-color-muted);
 }
 
 .profile-info h2 {
-    color: var(--text-color);
-    margin-bottom: 3px;
+  color: var(--text-color);
+  margin-bottom: 3px;
 }
 
 .profile-details {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 0 -20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 0 -20px;
 }
 
 .profile-details ul li {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 10px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
 }
 
 .logout-btn {
-    width: 100%;
-    margin-top: 20px;
+  width: 100%;
+  margin-top: 20px;
 }

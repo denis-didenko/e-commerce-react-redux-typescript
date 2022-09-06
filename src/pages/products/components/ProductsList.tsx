@@ -4,21 +4,19 @@ import ProductItem from './ProductItem';
 import '../products.css';
 
 interface IProductsListProps {
-    products: IProduct[];
+  products: IProduct[];
 }
 
 const ProductsList: FC<IProductsListProps> = ({ products }) => {
-    if (!products) return <p>Products not found</p>;
+  if (!products) return <p>Products not found</p>;
 
-    return (
-        <>
-            <div className='products-list'>
-                {products.map(product => (
-                    <ProductItem key={product.id} {...product} />
-                ))}
-            </div>
-        </>
-    );
+  return (
+    <div className='products-list'>
+      {products.map(product => (
+        <ProductItem key={product.id} {...product} />
+      ))}
+    </div>
+  );
 };
 
 export default ProductsList;

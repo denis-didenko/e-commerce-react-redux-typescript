@@ -1,11 +1,7 @@
-import { FC } from 'react';
-
-const Footer: FC = () => {
-    return (
-        <footer>
-            <div className='copyright'>Copyright</div>
-        </footer>
-    );
-};
+const Footer = () => (
+  <footer>
+    <div className='copyright'>Copyright</div>
+  </footer>
+);
 
 export default Footer;

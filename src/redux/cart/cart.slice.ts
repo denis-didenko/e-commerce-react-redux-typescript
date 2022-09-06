@@ -4,47 +4,49 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 import { ICartProducts } from './cart.types';
 
 interface CartState {
-    products: ICartProducts[];
+  products: ICartProducts[];
 }
 
 const initialState: CartState = {
-    products: [],
+  products: [],
 };
 
 export const cartSlice = createSlice({
-    name: 'cart',
-    initialState,
-    reducers: {
-        addToCartProduct: {
-            reducer: (state: CartState, action: PayloadAction<ICartProducts>) => {
-                const selectedProduct = state.products.find(product => product.id === action.payload.id);
-                if (selectedProduct) {
-                    selectedProduct.quantity += 1;
-                    return;
-                }
+  name: 'cart',
+  initialState,
+  reducers: {
+    addToCartProduct: {
+      reducer: (state: CartState, action: PayloadAction<ICartProducts>) => {
+        const selectedProduct = state.products.find(product => product.id === action.payload.id);
+        if (selectedProduct) {
+          selectedProduct.quantity += 1;
+          return;
+        }
 
-                state.products.push(action.payload);
-            },
-            prepare: (product: ICartProducts) => ({
-                payload: product,
-            }),
-        },
-        removeFromCartProduct: (state: CartState, action: PayloadAction<number>) => {
-            const selectedProduct = state.products.find(product => product.id === action.payload);
-            if (selectedProduct && selectedProduct.quantity > 1) {
-                selectedProduct.quantity -= 1;
-                return;
-            }
-
-            state.products = state.products.filter(product => product.id !== action.payload);
-        },
-        deleteCartItem: (state: CartState, action: PayloadAction<number>) => {
-            state.products = state.products.filter(product => product.id !== action.payload);
-        },
+        state.products.push(action.payload);
+      },
+      prepare: (product: ICartProducts) => ({
+        payload: product,
+      }),
     },
+    removeFromCartProduct: (state: CartState, action: PayloadAction<number>) => {
+      const selectedProduct = state.products.find(product => product.id === action.payload);
+      if (selectedProduct && selectedProduct.quantity > 1) {
+        selectedProduct.quantity -= 1;
+        return;
+      }
+
+      /* eslint-disable no-param-reassign */
+      state.products = state.products.filter(product => product.id !== action.payload);
+    },
+    deleteCartItem: (state: CartState, action: PayloadAction<number>) => {
+      state.products = state.products.filter(product => product.id !== action.payload);
+    },
+  },
 });
 
 export const { addToCartProduct, removeFromCartProduct, deleteCartItem } = cartSlice.actions;
 export default cartSlice.reducer;
 
-export const useCartProductsSelector = () => useTypedSelector((state: RootState) => state.cart.products);
+export const useCartProductsSelector = () =>
+  useTypedSelector((state: RootState) => state.cart.products);

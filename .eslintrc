@@ -1,0 +1,36 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": ["airbnb", "airbnb-typescript"],
+  "rules": {
+    "import/no-cycle": "off",
+    "import/prefer-default-export": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "arrow-parens": ["error", "as-needed"],
+    "function-paren-newline": "off",
+    "jsx-quotes": ["error", "prefer-single"],
+    "implicit-arrow-linebreak": "off",
+    "linebreak-style": "off",
+    "no-unused-expressions": "off",
+    "operator-linebreak": ["error", "after"],
+    "@typescript-eslint/no-unused-expressions": "warn",
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectPattern": { "multiline": true }
+      }
+    ]
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+}

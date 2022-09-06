@@ -8,9 +8,9 @@ const appEl = document.getElementById('app') as HTMLDivElement;
 const root = ReactDOM.createRoot(appEl);
 
 root.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Provider>
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
 );

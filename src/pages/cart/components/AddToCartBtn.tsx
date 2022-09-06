@@ -3,36 +3,41 @@ import useActions from '../../../redux/hooks/useActions';
 import { useProductByIdSelector } from '../../../redux/products/product.slice';
 
 interface IAddToCartBtnProps {
-    id: number;
-    children?: React.ReactNode;
+  id: number;
+  children?: React.ReactNode;
 }
 
 const AddToCartBtn: FC<IAddToCartBtnProps> = ({ id, children }) => {
-    const { addToCartProduct } = useActions();
+  const { addToCartProduct } = useActions();
 
-    const product = useProductByIdSelector(id);
-    const { title, price, thumbnail } = product!;
+  const product = useProductByIdSelector(id);
+  const { title, price, thumbnail } = product!;
 
-    const addToCartHandler = (id: number) => {
-        const cartProduct = {
-            id,
-            quantity: 1,
-            product: {
-                id,
-                title,
-                price,
-                thumbnail,
-            },
-        };
-
-        addToCartProduct(cartProduct);
+  const addToCartHandler = (productId: number) => {
+    const cartProduct = {
+      id: productId,
+      quantity: 1,
+      product: {
+        id: productId,
+        title,
+        price,
+        thumbnail,
+      },
     };
 
-    return (
-        <button className='add-to-cart-btn' data-product-id={id} onClick={() => addToCartHandler(id)}>
-            {children}
-        </button>
-    );
+    addToCartProduct(cartProduct);
+  };
+
+  return (
+    <button
+      className='add-to-cart-btn'
+      type='button'
+      data-product-id={id}
+      onClick={() => addToCartHandler(id)}
+    >
+      {children}
+    </button>
+  );
 };
 
 export default AddToCartBtn;
