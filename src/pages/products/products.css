@@ -65,17 +65,22 @@
 
 .product-details__pics {
   display: flex;
-  overflow-x: scroll;
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
 
 .product-details__pics img {
-  width: 80%;
-  height: 300px;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: var(--border-radius);
-  margin-right: 10px;
+}
+
+.product-details__pics .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .product-details__description,

@@ -26,3 +26,9 @@
   text-align: center;
   margin-top: 20px;
 }
+
+.api-sign-example {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 3px 0 0 5px;
+}

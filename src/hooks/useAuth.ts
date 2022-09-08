@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import { useLazyGetUserQuery } from '../redux/auth/auth.api';
-import { selectUser } from '../redux/auth/auth.slice';
-import { useTypedSelector } from '../redux/hooks/useTypedSelector';
+import { useAuthUserSelector } from '../redux/auth/auth.slice';
 import useActions from '../redux/hooks/useActions';
 
-export const useCheckAuth = () => {
-  const user = useTypedSelector(selectUser);
+export const useCheckAuthenticated = () => {
+  const user = useAuthUserSelector();
 
   return user ? { user, isAuthenticated: true } : { user, isAuthenticated: false };
 };

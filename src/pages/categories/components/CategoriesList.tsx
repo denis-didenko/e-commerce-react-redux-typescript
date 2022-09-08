@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ICategory } from '../../../redux/products/product.types';
 
 interface Props {
-  categories: ICategory[];
+  categories: ICategory[] | undefined;
 }
 
 const CategoriesList: FC<Props> = ({ categories }) => (

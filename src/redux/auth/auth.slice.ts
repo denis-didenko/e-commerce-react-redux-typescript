@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../index';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 import { IToken, IUserId, IUserResponse } from './auth.types';
 
 interface AuthState {
@@ -43,6 +44,7 @@ export const authSlice = createSlice({
 export const { setAuthToken, setAuthUserId, setUser, logout } = authSlice.actions;
 export default authSlice.reducer;
 
-export const selectToken = (state: RootState) => state.auth.token;
-export const selectUserId = (state: RootState) => state.auth.userId;
-export const selectUser = (state: RootState) => state.auth.user;
+export const useAuthTokenSelector = () => useTypedSelector((state: RootState) => state.auth.token);
+export const useAuthUserIdSelector = () =>
+  useTypedSelector((state: RootState) => state.auth.userId);
+export const useAuthUserSelector = () => useTypedSelector((state: RootState) => state.auth.user);

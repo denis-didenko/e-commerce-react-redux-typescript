@@ -1,12 +1,11 @@
 import { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { selectUser } from '../../redux/auth/auth.slice';
-import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
+import { useAuthUserSelector } from '../../redux/auth/auth.slice';
 import useActions from '../../redux/hooks/useActions';
 import './profile.css';
 
 const ProfilePage = () => {
-  const user = useTypedSelector(selectUser);
+  const user = useAuthUserSelector();
   const { logout } = useActions();
   const navigate = useNavigate();
 

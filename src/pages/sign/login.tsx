@@ -1,30 +1,26 @@
-import { useState, FC, FormEvent, FocusEvent } from 'react';
+import { useState, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PersonIcon from '@mui/icons-material/Person';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useLoginMutation } from '../../redux/auth/auth.api';
+import { ILogin } from '../../redux/auth/auth.types';
 import useActions from '../../redux/hooks/useActions';
 import './sign.css';
 
-const Login: FC = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  });
+const Login = () => {
   const [inputError, setInputError] = useState('');
   const [inputSuccess, setInputSuccess] = useState('');
   const [login] = useLoginMutation();
   const { setAuthToken, setAuthUserId } = useActions();
   const navigate = useNavigate();
 
-  const inputBlurHandler = (e: FocusEvent<HTMLInputElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
   const formSubmitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    await login(formData)
+    const formData = new FormData(e.currentTarget) as Iterable<[ILogin]>;
+    const entries: ILogin = Object.fromEntries(formData);
+
+    await login(entries)
       .unwrap()
       .then(data => {
         const { token, id } = data;
@@ -49,20 +45,17 @@ const Login: FC = () => {
       <form action='/login' onSubmit={formSubmitHandler}>
         <div className={inputError.length ? 'form-item error-item' : 'form-item'}>
           <div className='form-field with-icon'>
-            <input type='text' name='username' placeholder='Username:' onBlur={inputBlurHandler} />
+            <input type='text' name='username' placeholder='Username:' />
             <PersonIcon />
           </div>
+          <p className='api-sign-example'>api example: kminchelle</p>
         </div>
         <div className={inputError.length ? 'form-item error-item' : 'form-item'}>
           <div className='form-field with-icon'>
-            <input
-              type='password'
-              name='password'
-              placeholder='Password:'
-              onBlur={inputBlurHandler}
-            />
+            <input type='password' name='password' placeholder='Password:' />
             <LockOutlinedIcon />
           </div>
+          <p className='api-sign-example'>api example: 0lelplR</p>
           <div className='form-error'>{inputError}</div>
           <div className='form-success'>{inputSuccess}</div>
         </div>

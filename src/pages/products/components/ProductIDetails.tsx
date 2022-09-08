@@ -1,15 +1,18 @@
-import { FC } from 'react';
 import { useParams } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper';
 import StarIcon from '@mui/icons-material/Star';
 import { useGetProductQuery } from '../../../redux/products/product.api';
 import AddToCartBtn from '../../cart/components/AddToCartBtn';
 import Loading from '../../../components/Loading';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 type ProductParamsId = {
   id: string;
 };
 
-const ProductDetails: FC = () => {
+const ProductDetails = () => {
   const { id } = useParams() as ProductParamsId;
   const { data: product, isLoading } = useGetProductQuery({ id });
 
@@ -22,9 +25,13 @@ const ProductDetails: FC = () => {
     <div className='product-details'>
       <h1>{title}</h1>
       <div className='product-details__pics'>
-        {images.map(image => (
-          <img key={image} src={image} alt={title} />
-        ))}
+        <Swiper modules={[Pagination]} pagination={{ clickable: true }} slidesPerView={1}>
+          {images.map(image => (
+            <SwiperSlide key={image}>
+              <img src={image} alt={title} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
       <div className='product-details__description'>
         <p>{description}</p>

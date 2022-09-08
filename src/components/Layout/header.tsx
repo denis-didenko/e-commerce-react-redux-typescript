@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import SearchIcon from '@mui/icons-material/Search';
-import { useCheckAuth } from '../../hooks/useAuth';
+import { useCheckAuthenticated } from '../../hooks/useAuth';
 import logo from '../../assets/images/logo.svg';
 import CartICon from '../../pages/cart/components/CartIcon';
 
 const Header = () => {
-  const { isAuthenticated } = useCheckAuth();
+  const { isAuthenticated } = useCheckAuthenticated();
 
   return (
     <header>

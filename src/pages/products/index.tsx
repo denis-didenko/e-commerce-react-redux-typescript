@@ -15,15 +15,17 @@ const ProductsPage = () => {
 
   if (isLoading) return <Loading />;
   if (error) return <ErrorMessage error={error} />;
-  if (!data) return <p>No data</p>;
-
-  const totalPages = Math.ceil(data.total / data.limit);
 
   return (
     <>
       <h1>Products</h1>
-      <ProductsList products={data.products} />
-      <Pagination activePage={activePage} setActivePage={setActivePage} totalPages={totalPages} />
+      <ProductsList products={data?.products} />
+      <Pagination
+        activePage={activePage}
+        setActivePage={setActivePage}
+        total={data?.total}
+        limit={data?.limit}
+      />
       <Outlet />
     </>
   );

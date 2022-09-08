@@ -37,6 +37,4 @@ export default productSlice.reducer;
 export const useProductsSelector = () =>
   useTypedSelector((state: RootState) => state.product.products);
 export const useProductByIdSelector = (id: number | string) =>
-  useTypedSelector((state: RootState) =>
-    state.product?.products?.find(product => product.id === id),
-  );
+  useTypedSelector((state: RootState) => state.product.products.find(product => product.id === id));

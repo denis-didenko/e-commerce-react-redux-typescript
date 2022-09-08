@@ -1,3 +1,6 @@
+.cart-page {
+}
+
 .cart-item {
   margin-bottom: 20px;
   display: flex;
@@ -62,4 +65,15 @@
   cursor: pointer;
   line-height: 1;
   color: var(--text-color-muted);
+}
+
+.cart-summary {
+  border-top: 1px solid var(--text-color-muted);
+  padding-top: 20px;
+}
+
+.cart-summary button {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 20px;
 }

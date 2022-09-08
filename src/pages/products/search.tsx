@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { useSearchProductsQuery } from '../../redux/products/product.api';
+import { useState, useEffect } from 'react';
+import { useDebounce } from 'use-debounce';
+import { useLazySearchProductsQuery } from '../../redux/products/product.api';
 import ProductsList from './components/ProductsList';
 import SearchForm from './components/SearchForm';
 import Loading from '../../components/Loading';
@@ -9,27 +10,36 @@ import Pagination from '../../components/Pagination';
 const SearchPage = () => {
   const [query, setQuery] = useState('');
   const [activePage, setActivePage] = useState(1);
-  const { data, error, isLoading } = useSearchProductsQuery({ query });
+
+  const [debouncedQuery] = useDebounce(query, 500);
+  const [searchProducts, { data, error, isLoading }] = useLazySearchProductsQuery();
+
+  useEffect(() => {
+    if (debouncedQuery.length) {
+      searchProducts({ query: debouncedQuery });
+    }
+  }, [debouncedQuery, searchProducts]);
 
   if (isLoading) return <Loading />;
   if (error) return <ErrorMessage error={error} />;
-  if (!data) return <p>No data</p>;
-
-  const totalPages = Math.ceil(data.total / data.limit);
 
   return (
     <>
       <h1>Search Products</h1>
-      <SearchForm setQuery={setQuery} />
-      {query.length > 0 && (
+      <SearchForm query={query} setQuery={setQuery} />
+
+      {data && query.length ? (
         <>
-          <ProductsList products={data.products} />
+          <ProductsList products={data?.products} />
           <Pagination
             activePage={activePage}
             setActivePage={setActivePage}
-            totalPages={totalPages}
+            total={data?.total}
+            limit={data?.limit}
           />
         </>
+      ) : (
+        <p>No products found</p>
       )}
     </>
   );

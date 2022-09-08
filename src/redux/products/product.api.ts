@@ -37,4 +37,5 @@ export const {
   useGetCategoriesQuery,
   useGetCategoryProductsQuery,
   useSearchProductsQuery,
+  useLazySearchProductsQuery,
 } = productApi;

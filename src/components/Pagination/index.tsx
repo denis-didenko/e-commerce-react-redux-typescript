@@ -4,15 +4,21 @@ import './pagination.css';
 interface IPaginationProps {
   activePage: number;
   setActivePage: (active: number) => void;
-  totalPages: number;
+  total: number | undefined;
+  limit: number | undefined;
 }
 
 // get array of pages
-const getPages = (totalPages: number): number[] =>
-  Array.from({ length: totalPages }, (_, index) => index + 1); // eslint-disable-line
+const getPages = (total: number, limit: number): number[] => {
+  const totalPages = Math.ceil(total / limit);
 
-const Pagination: FC<IPaginationProps> = ({ totalPages, activePage, setActivePage }) => {
-  const pages = getPages(totalPages);
+  return Array.from({ length: totalPages }, (_, index) => index + 1);
+};
+
+const Pagination: FC<IPaginationProps> = ({ total, limit, activePage, setActivePage }) => {
+  if (!total || !limit) return null;
+
+  const pages = getPages(total, limit);
 
   return (
     <div className='pagination'>
@@ -21,7 +27,7 @@ const Pagination: FC<IPaginationProps> = ({ totalPages, activePage, setActivePag
           key={page}
           className={`page-item${activePage === page ? ' is-active' : ''}`}
           onClick={() => setActivePage(page)}
-          onKeyPress={() => setActivePage(page)}
+          onKeyDown={() => setActivePage(page)}
           role='button'
           tabIndex={0}
         >

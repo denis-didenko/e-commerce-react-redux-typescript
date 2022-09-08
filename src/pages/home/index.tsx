@@ -1,19 +1,14 @@
 import { Link } from 'react-router-dom';
-import { selectUser } from '../../redux/auth/auth.slice';
-import { useTypedSelector } from '../../redux/hooks/useTypedSelector';
+import { useAuthUserSelector } from '../../redux/auth/auth.slice';
 import { useGetCategoriesQuery } from '../../redux/products/product.api';
 import { useProductsSelector } from '../../redux/products/product.slice';
 import CategoriesList from '../categories/components/CategoriesList';
 import ProductsList from '../products/components/ProductsList';
 
 const HomePage = () => {
-  const products = useProductsSelector();
-  const homeProducts = products.slice(0, 8);
-
-  const user = useTypedSelector(selectUser);
-
   const { data: categories } = useGetCategoriesQuery();
-  if (!categories) return <p>No categories</p>;
+  const products = useProductsSelector();
+  const user = useAuthUserSelector();
 
   return (
     <div className='home-page'>
@@ -30,7 +25,7 @@ const HomePage = () => {
         <h2>Featured Products</h2>
         <Link to='/products'>See All</Link>
       </div>
-      <ProductsList products={homeProducts} />
+      <ProductsList products={products.slice(0, 8)} />
     </div>
   );
 };
